@@ -74,7 +74,7 @@ int main()
 }
 */
 
-
+/*
 //7.Даны действительные числа а1, ..a16. Используя указатели получить min(a1*a9, a2*a10, ..., a8*a16). 
 
 void fillArray(int *a, int n)
@@ -117,6 +117,54 @@ int main()
 	fillArray(a, 16);
 	printArray(a, 16);
 	cout<<endl<<findMin(a, 16)<<endl;
+
+	system("pause");
+}
+*/
+
+
+//8.Дана последовательность a1, a2, ..., a20.Используя указатели расположить положительные элементы последовательности, стоящие на нечетных местах по возрастанию.
+
+void fillArray(int *a, int n)
+{
+	for (int i = 0; i < n; i++)
+		a[i] = 1 + rand() % 11;
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p < a + n; p++)
+	{
+		cout << *p << " ";
+	}
+	cout << endl;
+}
+
+template<typename T>
+T sort(T *a, int n)
+{
+	T* p1 = a;
+	T* p2 = a + n / 2;
+	T mult, min = *p1* *p2;
+
+	for (; p1 < a + n / 2; p1++, p2++)
+	{
+		mult = *p1* *p2;
+		cout << mult << endl;
+
+		if (mult <= min)
+			min = mult;
+	}
+	return min;
+}
+
+int main()
+{
+	srand(time(NULL));
+	int a[16];
+	fillArray(a, 16);
+	printArray(a, 16);
+	cout << endl << findMin(a, 16) << endl;
 
 	system("pause");
 }
