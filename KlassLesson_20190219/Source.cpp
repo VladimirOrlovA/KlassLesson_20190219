@@ -1,6 +1,7 @@
 #include<iostream>
 #include<locale.h>
 #include<time.h>
+#include<locale.h>
 #include<Windows.h>
 
 using namespace std;
@@ -123,7 +124,7 @@ int main()
 */
 
 
-//8.Дана последовательность a1, a2, ..., a20.Используя указатели расположить положительные элементы последовательности, стоящие на нечетных местах по возрастанию.
+/*//8.Дана последовательность a1, a2, ..., a20.Используя указатели расположить положительные элементы последовательности, стоящие на нечетных местах по возрастанию.
 
 void fillArray(int *a, int n)
 {
@@ -167,7 +168,7 @@ int main()
 	cout << endl << findMin(a, 16) << endl;
 
 	system("pause");
-}
+}*/
 
 
 //int main()
@@ -302,3 +303,593 @@ int main()
 //
 //	system("pause");
 //}
+
+
+
+///// _____________ 2019 02 20 _____________ С_pract_pointers_dp
+
+
+//1.	*Дан массив чисел, необходимо ввести в него и вывести из него числа с помощью указателей.
+
+/*
+void fillArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		*p = 1 + rand() % 11;
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p < a + n; p++)
+	{
+		cout << *p << " ";
+	}
+	cout << endl;
+}
+
+
+int main()
+{
+	srand(time(NULL));
+	int a[10];
+	
+	fillArray(a, 10);
+	printArray(a, 10);
+	
+	system("pause");
+}
+*/
+
+//2.	*Создать массив из 10 целых чисел.Заполнить массив случайным образом в диапазоне от - 25 до 35. 
+//Пользуясь указателем на массив целых чисел, посчитать сумму элементов массива.
+/*
+void fillArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		*p = -25 + rand() % 35;
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p < a + n; p++)
+	{
+		cout << *p << " ";
+	}
+	cout << endl;
+}
+
+void sumArray(int *a, int n)
+{
+	int sum = 0;
+
+	for (int *p = a; p != a + n; p++)
+		sum += *p;
+
+	cout << "Сумма элементов массива = " << sum<<endl;
+
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+	srand(time(NULL));
+	int a[10];
+
+	fillArray(a, 10);
+	printArray(a, 10);
+	sumArray(a, 10);
+	
+	
+
+	system("pause");
+}
+*/
+
+
+//3.	*Создать массив из 10 целых чисел.Заполнить массив случайным образом в диапазоне от - 44 до 76. 
+// Пользуясь указателем на массив целых чисел, посчитать произведение элементов массива.
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		//*p = -44 + rand() % 76;
+		*p = 1 + rand() % 10;
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void prodArray(int *a, int n)
+{
+	int prod = 1;
+	for (int *p = a; p != a + n; p++)
+		prod *= *p;
+
+		cout << prod << endl;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 10;
+	int a[n] = { 0 };
+
+	fillArray(a, n);
+	printArray(a, n);
+	prodArray(a, n);
+	
+	
+	system("pause");
+}
+*/
+
+//4.	*Создать массив из 10 целых чисел.Заполнить массив случайным образом в диапазоне от - 15 до 105. 
+//Пользуясь указателем на массив целых чисел, посчитать среднее арифметическое элементов массива.
+
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		//*p = -44 + rand() % 76;
+		*p = 1 + rand() % 10;
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void arifArray(int *a, int n)
+{
+	
+	int sum = 1, *p=a;
+	for (; p != a + n; p++)
+		sum += *p;
+	
+	cout <<double(sum) / (p-a) << endl;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 10;
+	int a[n] = { 0 };
+
+	fillArray(a, n);
+	printArray(a, n);
+	arifArray(a, n);
+
+
+	system("pause");
+}
+*/
+
+//5.	**Создать массив из 10 целых чисел.Заполнить массив случайным образом в диапазоне от - 45 до 45. 
+//Пользуясь указателем(и) на массив целых чисел, посчитать процент положительных и отрицательных элементов массива.
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		//*p = -44 + rand() % 76;
+		*p = -2 + rand() % 5;
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void procArray(int *a, int n)
+{
+
+	int sumP = 0, sumN = 0,  *p = a;
+
+	for (; p != a + n; p++)
+	{
+		if (*p > 0) sumP++;
+		if (*p < 0) sumN++;
+	}
+	cout << double(sumP) / (p - a)*100 <<"%"<< endl;
+	cout << double(sumN) / (p - a)*100 <<"%"<< endl;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 10;
+	int a[n] = { 0 };
+
+	fillArray(a, n);
+	printArray(a, n);
+	procArray(a, n);
+
+
+	system("pause");
+}
+*/
+
+//6.	*Создать массив из 10 целых чисел. Заполнить массив случайным образом. 
+//Пользуясь указателем на массив целых чисел, посчитать сумму элементов массива с четными номерами.
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		*p = -5 + rand() % 9;
+		
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void sumEvenArray(int *a, int n)
+{
+
+	int sumEven = 0, *p = a;
+
+	for (; p != a + n; p++)
+	{
+		if ((p-a) % 2== 0) sumEven+=*p;
+		
+	}
+	cout << sumEven << endl;
+	
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 10;
+	int a[n] = { 0 };
+
+	fillArray(a, n);
+	printArray(a, n);
+	sumEvenArray(a, n);
+
+
+	system("pause");
+}
+*/
+
+// 7.	*Создать массив из 10 целых чисел. Заполнить массив случайным образом. 
+//Пользуясь указателем на массив целых чисел, посчитать сумму элементов массива с нечетными номерами.
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		*p = -5 + rand() % 9;
+
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void sumEvenArray(int *a, int n)
+{
+
+	int sumEven = 0, *p = a;
+
+	for (; p != a + n; p++)
+	{
+		if ((p - a) % 2 != 0) sumEven += *p;
+
+	}
+	cout << sumEven << endl;
+
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 10;
+	int a[n] = { 0 };
+
+	fillArray(a, n);
+	printArray(a, n);
+	sumEvenArray(a, n);
+
+
+	system("pause");
+}
+*/
+
+//8.	*Создать массив из 10 целых чисел. Заполнить массив случайным образом. 
+//Пользуясь указателем на массив целых чисел, посчитать сумму элементов массива с номерами кратными трем.
+
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		*p = -5 + rand() % 9;
+
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void sumEvenArray(int *a, int n)
+{
+
+	int sumEven = 0, *p = a;
+
+	for (; p != a + n; p++)
+	{
+		if ((p - a) % 3 != 0) sumEven += *p;
+
+	}
+	cout << sumEven << endl;
+
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 10;
+	int a[n] = { 0 };
+
+	fillArray(a, n);
+	printArray(a, n);
+	sumEvenArray(a, n);
+
+
+	system("pause");
+}
+*/
+
+//9.	*Создать массив из 10 целых чисел. Заполнить массив случайным образом. Пользуясь указателем на массив целых чисел, посчитать сумму элементов массива с номерами кратными 7.
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		*p = -5 + rand() % 9;
+
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void sumEvenArray(int *a, int n)
+{
+
+	int sumEven = 0, *p = a;
+
+	for (; p != a + n; p++)
+	{
+		if ((p - a) % 7 != 0) sumEven += *p;
+
+	}
+	cout << sumEven << endl;
+
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 10;
+	int a[n] = { 0 };
+
+	fillArray(a, n);
+	printArray(a, n);
+	sumEvenArray(a, n);
+
+
+	system("pause");
+}
+*/
+
+// 10.	*Создать массив из 20 целых чисел. Заполнить массив случайным образом в диапазоне от 1 до 12. Каждое число это оценка по 12 бальной системе. 
+//Пользуясь указателем на массив целых чисел, посчитать процент двоек, троек, четверок и пятерок.
+//Двойка от 1 до 3 включительно, тройка от 4 до 6, четверка от 7 до 9, пятерка от 10 до 12.
+
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		*p = 1 + rand() % 12;
+
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void sumEvenArray(int *a, int n)
+{
+
+	int sum2 = 0, sum3 = 0, sum4 = 0, sum5 = 0, *p = a;
+
+	for (; p != a + n; p++)
+	{
+		if (*p >= 1 && *p <= 3) sum2++;
+		if (*p >= 4 && *p <= 6) sum3++;
+		if (*p >= 7 && *p <= 9) sum4++;
+		if (*p >= 10 && *p <= 12) sum5++;
+		
+
+	}
+	cout << double(sum2) / n * 100 << "%" << endl;
+	cout << double(sum3) / n * 100 << "%" << endl;
+	cout << double(sum4) / n * 100 << "%" << endl;
+	cout << double(sum5) / n * 100 << "%" << endl;
+
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 20;
+	int a[n] = { 0 };
+
+	fillArray(a, n);
+	printArray(a, n);
+	sumEvenArray(a, n);
+
+
+	system("pause");
+}
+*/
+
+
+//11.	**Создать массив из N целых чисел, N  вводит пользователь.Заполнить массив случайным образом в диапазоне от 1 до 12. 
+//Каждое число это оценка по 12 бальной системе.Пользуясь указателем на массив целых чисел, посчитать процент двоек,
+
+/*
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		*p = 1 + rand() % 12;
+
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void sumEvenArray(int *a, int n)
+{
+
+	int sum2 = 0, sum3 = 0, sum4 = 0, sum5 = 0, *p = a;
+
+	for (; p != a + n; p++)
+	{
+		if (*p >= 1 && *p <= 3) sum2++;
+		if (*p >= 4 && *p <= 6) sum3++;
+		if (*p >= 7 && *p <= 9) sum4++;
+		if (*p >= 10 && *p <= 12) sum5++;
+
+
+	}
+	cout << double(sum2) / n * 100 << "%" << endl;
+	cout << double(sum3) / n * 100 << "%" << endl;
+	cout << double(sum4) / n * 100 << "%" << endl;
+	cout << double(sum5) / n * 100 << "%" << endl;
+
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 20;
+	int a[n] = { 0 };
+
+	
+	fillArray(a, n);
+	printArray(a, n);
+	sumEvenArray(a, n);
+
+
+	system("pause");
+}
+*/
+
+//36.	***Написать программу, которая содержит функцию, принимающую в качестве аргумента, указатели на два массива(А и В) и размеры массивов.Функция проверяет, 
+//является ли массив В подмножеством массива А и возвращает указатель на начало найденного фрагмента, если элемента нет, возвращает 0.
+
+void fillArray(int *a, int n)
+{
+	srand(time(NULL));
+
+	for (int *p = a; p != a + n; p++)
+		*p = 1 + rand() % 12;
+
+}
+
+void printArray(int *a, int n)
+{
+	for (int *p = a; p != a + n; p++)
+		cout << *p << "\t";
+	cout << endl;
+}
+
+void sumEvenArray(int *a, int n)
+{
+
+	int sum2 = 0, sum3 = 0, sum4 = 0, sum5 = 0, *p = a;
+
+	for (; p != a + n; p++)
+	{
+		if (*p >= 1 && *p <= 3) sum2++;
+		if (*p >= 4 && *p <= 6) sum3++;
+		if (*p >= 7 && *p <= 9) sum4++;
+		if (*p >= 10 && *p <= 12) sum5++;
+
+
+	}
+	cout << double(sum2) / n * 100 << "%" << endl;
+	cout << double(sum3) / n * 100 << "%" << endl;
+	cout << double(sum4) / n * 100 << "%" << endl;
+	cout << double(sum5) / n * 100 << "%" << endl;
+
+}
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+	const int n = 20;
+	int a[n] = { 0 };
+
+
+	fillArray(a, n);
+	printArray(a, n);
+	sumEvenArray(a, n);
+
+
+	system("pause");
+}
